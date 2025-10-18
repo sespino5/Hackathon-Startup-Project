@@ -179,7 +179,7 @@ function App() {
               
               {/* Display Original Prompt */}
               <div className="original-prompt-section">
-                <h3>Your Code:</h3>
+                <h3>Code:</h3>
                 <CodeBlock 
                   text={displayedContent} 
                   isResponse={true} 

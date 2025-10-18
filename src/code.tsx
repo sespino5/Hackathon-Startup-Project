@@ -43,7 +43,7 @@ export function CodeBlock({ text, onClick, isResponse = false, highlightLines = 
                 <span 
                   key={index} 
                   className={`line-number ${highlighted ? 'highlighted-line-number' : ''}`} 
-                  style={{ width: `${lineNumberWidth}ch` }}
+                  style={{ width: `${lineNumberWidth}ch`}}
                 >
                   {lineNumber}
                 </span>

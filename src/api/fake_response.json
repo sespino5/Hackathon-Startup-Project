@@ -3,13 +3,9 @@
         {
             "start_line": 1,
             "end_line": 1,
-            "suggestion": "Possible typosquatting/supply-chain risk: importing from \"exxpress\" (likely meant \"express\"). Use the correct, trusted package name (\"express\"), pin to a known-good version, use a lockfile, and audit dependencies (npm audit). Also verify the package source/repository before installing."
-        },
-        {
-            "start_line": 5,
-            "end_line": 5,
-            "suggestion": "Possible typosquatting/supply-chain risk: importing from \"axxios\" (likely meant \"axios\"). Use the correct, trusted package name (\"axios\"), pin to a known-good version, use a lockfile, and audit dependencies (npm audit). Also verify the package source/repository before installing."
+            "suggestion": "Possible typosquatting/supply-chain risk: importing from \"nvmpy\" (likely meant \"numpy\"). Use the correct, trusted package name (\"numpy\")."
         }
+ 
     ],
     "generation": {
         "status": "success",
