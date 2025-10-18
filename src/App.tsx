@@ -1,4 +1,5 @@
-import { expandedText, attachAutoExpand, processInputText, handleInputBlur as handleBlur, resetTextareaHeight, attachRandomEyeMovement, formatTextForDisplay, formatCodeWithLineNumbers } from './APP'
+import { expandedText, attachAutoExpand, processInputText, handleInputBlur as handleBlur, resetTextareaHeight, attachRandomEyeMovement} from './APP'
+import { formatTextForDisplay, formatCodeWithLineNumbers } from './Code'
 import './App.css'
 import { useState, useRef, useEffect } from 'react'
 import FAKE_JSON from './api/fake_response.json'
