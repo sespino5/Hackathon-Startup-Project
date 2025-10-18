@@ -4,6 +4,7 @@ import './App.css'
 import { useState, useRef, useEffect } from 'react'
 import 'react-tooltip/dist/react-tooltip.css'
 import { Generation, Validation } from './api/api.ts'
+import myGif from './throbber/throbber.gif';
 
 
 function App() {
@@ -13,6 +14,7 @@ function App() {
     const [promptHistory, setPromptHistory] = useState<{ full: string, truncated: string }[]>([])
     const [displayedContent, setDisplayedContent] = useState<string>('')
     const [validationResults, setValidationResults] = useState<any[]>([])
+    const [isValidation, setIsValidation] = useState(false)
     const [showDisplay, setShowDisplay] = useState(false)
     const [hideInput, setHideInput] = useState(false)
     const textareaRef = useRef<HTMLTextAreaElement>(null)
@@ -61,10 +63,13 @@ function App() {
             // Open sidebar to show history
             setSidebarOpen(false)
 
+            setIsValidation(true);
+
             Generation.post(trimmedValue).then(res => {
                 setDisplayedContent(res.content);
                 Validation.post(res.content).then((data) => {
-                    setValidationResults(data);
+                    setValidationResults(data)
+                    setIsValidation(false);
                 });
             });
 
@@ -152,8 +157,14 @@ function App() {
                         </div>
                     )}
 
+                    {isValidation && (
+                        <div className="response-container">
+                        <img src={myGif} alt="Loading..." className="loading-gif" />
+                        </div>
+                    )}
+
                     {/* AI-style Response Display Area */}
-                    {showDisplay && (
+                    {showDisplay &&  (
                         <div className="response-container">
                             <div className="response-header">
                                 <div className="header-buttons">

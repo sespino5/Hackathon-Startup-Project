@@ -3,7 +3,7 @@ import FAKE_JSON from "./fake_response.json"
 import CONFIG from "./config.json"
 import { Convert } from "./helpers";
 
-const DEBUG = false;
+const DEBUG = true;
 
 let client: OpenAI | null = null;
 

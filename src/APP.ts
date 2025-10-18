@@ -23,6 +23,8 @@ export function handleInputBlur(inputValue: string, setInputValue: (value: strin
     }
 }
 
+
+
 // Utility function to reset textarea height
 export function resetTextareaHeight(textareaRef: React.RefObject<HTMLTextAreaElement | null>) {
     if (textareaRef.current) {

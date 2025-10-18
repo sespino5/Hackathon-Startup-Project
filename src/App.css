@@ -10,7 +10,7 @@
 #root {
     max-width: 1280px;
     margin: 0 auto;
-    padding: 0 2rem;
+    padding: 2rem;
     text-align: center;
     min-height: 100vh;
 }
@@ -281,6 +281,15 @@ h2 {
     box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
 }
 
+.loading-gif {
+    width: 50px;
+    height: 50px;
+    margin: 20px auto;
+    display: block;
+    align-items: center;
+
+}
+
 .sidebar p {
     margin-top: 100px;
     text-align: left;
@@ -425,18 +434,6 @@ h2 {
     font-weight: bold;
     color: rgba(255, 255, 255, 0.2);
     line-height: 200px;
-}
-
-.inputBox {
-    width: 100%;
-    max-width: 500px;
-    padding: 12px 16px;
-    font-size: 16px;
-    border: 2px solid #272525;
-    border-radius: 8px;
-    margin-bottom: 20px;
-    order: 1;
-    /* Ensures input comes first */
 }
 
 .inputBox:focus {
@@ -680,26 +677,5 @@ h2 {
 
 .highlighted-code-line:hover {
     background-color: rgba(239, 68, 68, 0.3) !important;
-}
 
-/* Tooltip Styling */
-[data-tooltip-id="validation-tooltip"] {
-    /* Custom styling for elements that have tooltips */
-    position: relative;
-    line-height: 2.0;
-}
-
-/* React Tooltip Component Styling */
-.react-tooltip {
-    background-color: #1f2937 !important;
-    color: #f9fafb !important;
-    border: 1px solid #374151 !important;
-    border-radius: 8px !important;
-    padding: 12px 16px !important;
-    font-size: 14px !important;
-    line-height: 1.5 !important;
-    width: 250px !important;
-    word-wrap: break-word !important;
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3) !important;
-    z-index: 9999 !important;
 }
