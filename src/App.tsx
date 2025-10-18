@@ -1,4 +1,3 @@
-
 import { expandedText, attachAutoExpand, processInputText, handleInputBlur as handleBlur, resetTextareaHeight, attachRandomEyeMovement, formatTextForDisplay, formatCodeWithLineNumbers } from './APP'
 import './App.css'
 import { useState, useRef, useEffect } from 'react'
