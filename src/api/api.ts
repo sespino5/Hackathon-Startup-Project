@@ -5,10 +5,14 @@ import { Convert } from "./helpers";
 
 const DEBUG = true;
 
-const client = new OpenAI({
-    apiKey: CONFIG.openai_api_key,
-    dangerouslyAllowBrowser: true // This is a demo lol
-})
+let client: OpenAI | null = null;
+
+if (!DEBUG) {
+    client = new OpenAI({
+        apiKey: CONFIG.openai_api_key,
+        dangerouslyAllowBrowser: true // This is a demo lol
+    })
+}
 
 export interface SomeUsableResponseIdk {
     status: 'success' | 'failure'
@@ -45,7 +49,8 @@ export class Validation {
             console.log(FAKE_JSON.validation);
             return;
         }
-        if (!CONFIG.openai_api_key) throw Error("Set your OpenAI API key please senor")
+        if (!client) return;
+        if (!CONFIG.openai_api_key) throw Error("Set your OpenAI API key please senor");
         const res = await client.chat.completions.create({
             model: "gpt-5",
             messages: [
