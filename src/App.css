@@ -5,38 +5,304 @@
   text-align: center;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+/* Animated Eye Styles */
+.animated-eye {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 20px 0;
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.eye-white {
+  width: 80px;
+  height: 50px;
+  background-color: rgb(0, 0, 0);
+  border-radius: 50px;
+  border: 2px solid #0a0a0a;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
+.iris {
+  width: 30px;
+  height: 30px;
+  background: radial-gradient(circle, #4a90e2 0%, #2c5aa0 70%, #1e3a5f 100%);
+  border-radius: 50%;
+  position: relative;
+  animation: moveIris 2s ease-in-out infinite;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.pupil {
+  width: 12px;
+  height: 12px;
+  background-color: black;
+  border-radius: 50%;
+  position: relative;
+}
+
+/* Dynamic random animation - will be controlled by JavaScript */
+@keyframes moveIrisRandom1 {
+  0% { transform: translate(0, 0); }
+  25% { transform: translate(-12px, 8px); }
+  50% { transform: translate(15px, -5px); }
+  75% { transform: translate(-8px, -12px); }
+  100% { transform: translate(0, 0); }
+}
+
+@keyframes moveIrisRandom2 {
+  0% { transform: translate(0, 0); }
+  25% { transform: translate(10px, -8px); }
+  50% { transform: translate(-15px, 6px); }
+  75% { transform: translate(8px, 12px); }
+  100% { transform: translate(0, 0); }
+}
+
+@keyframes moveIrisRandom3 {
+  0% { transform: translate(0, 0); }
+  25% { transform: translate(-6px, -10px); }
+  50% { transform: translate(12px, 4px); }
+  75% { transform: translate(-10px, 15px); }
+  100% { transform: translate(0, 0); }
+}
+
+@keyframes moveIrisRandom4 {
+  0% { transform: translate(0, 0); }
+  25% { transform: translate(14px, -6px); }
+  50% { transform: translate(-8px, -14px); }
+  75% { transform: translate(6px, 10px); }
+  100% { transform: translate(0, 0); }
+}
+
+@keyframes moveIrisRandom5 {
+  0% { transform: translate(0, 0); }
+  25% { transform: translate(-14px, 12px); }
+  50% { transform: translate(8px, -8px); }
+  75% { transform: translate(-4px, -15px); }
+  100% { transform: translate(0, 0); }
+}
+
+/* Title with inline animated eye */
+.app-title {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0;
+  font-size: 5rem;
+  font-weight: bold;
+  line-height: 1;
+}
+
+.animated-eye-inline {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+}
+
+.animated-eye-inline .eye-white {
+  width: 80px;
+  height: 80px;
+  background-color: black;
+  border-radius: 50%;
+  border: 3px solid #333;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.animated-eye-inline .iris {
+  width: 32px;
+  height: 32px;
+  background: radial-gradient(circle, #87CEEB 0%, #4a90e2 50%, #2c5aa0 100%);
+  border-radius: 50%;
+  position: relative;
+  animation: moveIris 6s ease-in-out infinite;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.animated-eye-inline .pupil {
+  width: 12px;
+  height: 12px;
+  background-color: black;
+  border-radius: 50%;
+  position: relative;
+}
+
+
+
+
+
+/* Hamburger Menu Styles */
+.hamburger-menu {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  width: 30px;
+  height: 25px;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  z-index: 1000;
+}
+
+.hamburger-line {
+  width: 100%;
+  height: 3px;
+  background-color: #ffffff;
+  border-radius: 2px;
+  transition: all 0.3s ease;
+}
+
+
+
+/* Sidebar Styles */
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: -300px;
+  width: 100px;
+  height: 100%;
+  background-color: #323333;
+  border-right: 1px solid #e0e0e0;
+  padding: 20px;
+  transition: left 0.3s ease;
+  z-index: 999;
+  box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.sidebar p{
+  margin-top: 100px;
+  text-align: left;
+  color: white;
+}
+
+/* History styles */
+.history-list {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  margin-top: 20px;
+  overflow-y: auto;
+}
+
+.history-item {
+  background-color: #444;
+  margin-bottom: 10px;
+  padding: 8px;
+  border-radius: 5px;
+  border-left: 3px solid #393939;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.history-number {
+  color: #ffffff;
+  font-size: 12px;
+  font-weight: bold;
+  margin-right: 10px;
+  flex-shrink: 0;
+}
+
+.history-text {
+  color: white !important;
+  text-decoration: none !important;
+  font-size: 16px;
+  margin: 0;
+  padding: 0;
+  line-height: 1;
+  word-wrap: break-word;
+  display: inline-block;
+}
+
+.history-text:visited {
+  color: white !important;
+}
+
+.history-text:hover {
+  color: #ccc !important;
+}
+
+.history-text:active {
+  color: white !important;
+}
+
+
+
+.no-history {
+  color: #888;
+  font-style: italic;
+  margin-top: 20px;
+}
+
+.sidebar-open {
+  left: 0;
 }
 
 .card {
-  padding: 2em;
+  margin: 2rem;
+  padding: 1.5rem;
+  text-align: center;
+  color: inherit;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
 }
 
-.read-the-docs {
-  color: #888;
+.inputBox {
+  width: 100%;
+  max-width: 500px;
+  padding: 12px 16px;
+  font-size: 16px;
+  border: 2px solid #272525;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  order: 1; /* Ensures input comes first */
 }
+
+.inputBox:focus {
+  outline: none;
+  border-color: #ffffff;
+  box-shadow: 0 0 0 2px rgba(100, 108, 255, 0.2);
+}
+
+.card button {
+  padding: 10px 20px;
+  margin: 0 5px;
+  border: 1px solid #3e3c3c;
+  border-radius: 5px;
+  background-color: #000000;
+  cursor: pointer;
+  font-size: 14px;
+  order: 2; /* Ensures buttons come after input */
+}
+
+.button-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+  order: 2;
+}
+
+.card button:hover {
+  background-color: #646cff;
+  color: white;
+  border-color: #646cff;
+}
+
+
