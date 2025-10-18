@@ -216,8 +216,8 @@ function App() {
           Arg
           <span className="animated-eye-inline">
             <div className="eye-white">
-              <div className="iris" ref={eyeIrisRef}>
-                <div className="pupil"></div>
+              <div id="iris" className="iris" ref={eyeIrisRef}>
+                <div id="pupil" className="pupil"></div>
               </div>
             </div>
           </span>
