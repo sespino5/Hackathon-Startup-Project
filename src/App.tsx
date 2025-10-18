@@ -132,7 +132,7 @@ function App() {
           </span>
           s
         </h1>
-        <h2> Security at a Glance </h2>
+        <h2>Secure Code at a Glance</h2>
 
        
         {!hideInput && (
@@ -143,12 +143,12 @@ function App() {
               onChange={handleInputChange}
               onBlur={handleInputBlur}
               className="inputBox" 
-              placeholder="Type your code/prompt here"
+              placeholder="Type your prompt here!"
               rows={3}
             />
 
             <div className="button-container">
-              <button onClick={handlePromptSubmit}>Submit Prompt</button>
+              <button onClick={handlePromptSubmit}>Submit</button>
             </div>
           </div>
         )}
@@ -157,15 +157,7 @@ function App() {
         {showDisplay && (
           <div className="response-container">
             <div className="response-header">
-              <span className="ai-label">Argos</span>
               <div className="header-buttons">
-                <button 
-                  className="new-prompt-btn" 
-                  onClick={handleNewPrompt}
-                  title="New Prompt"
-                >
-                  New Prompt
-                </button>
                 <button 
                   className="close-response" 
                   onClick={handleNewPrompt}
@@ -179,7 +171,6 @@ function App() {
               
               {/* Display Original Prompt */}
               <div className="original-prompt-section">
-                <h3>Code:</h3>
                 <CodeBlock 
                   text={displayedContent} 
                   isResponse={true} 
