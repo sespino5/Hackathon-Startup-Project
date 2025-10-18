@@ -48,22 +48,30 @@ export function attachRandomEyeMovement(eyeElement: HTMLElement) {
         'moveIrisRandom5'
     ];
     
+
     function randomizeAnimation() {
         // Generate random values similar to random(min, max)
         const randomAnimation = animations[Math.floor(Math.random() * animations.length)];
-        const randomDuration = Math.random() * 4 + 3; // random between 3-7 seconds
-        const randomDelay = Math.random() * 2; // random delay 0-2 seconds
         
-        eyeElement.style.animation = `${randomAnimation} ${randomDuration}s ease-in-out ${randomDelay}s infinite`;
+        eyeElement.style.animation = `${randomAnimation} 1.5s ease-in-out 1.5s`;
+
     }
+
+    function animate() {
+        const pupil = document.getElementById("pupil");
+        pupil!.style.animation = "none";
+        pupil!.offsetHeight;
+        pupil!.style.animation = "shrinkPupil 1.5s ease-in-out 1.5s"
+
+        randomizeAnimation();
+    }
+
+    eyeElement.addEventListener("animationend", e => {
+        animate();
+    })
     
     // Initial randomization
-    randomizeAnimation();
-    
-    // Change animation every 6-12 seconds for true randomness
-    setInterval(() => {
-        randomizeAnimation();
-    }, Math.random() * 6000 + 6000); // random interval between 6-12 seconds
+    animate();
 }
 
 // Code detection function
