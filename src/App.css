@@ -10,12 +10,31 @@
 #root {
     max-width: 1280px;
     margin: 0 auto;
-    padding: 2rem;
+    padding: 0 2rem;
     text-align: center;
+    min-height: 100vh;
 }
 
 body {
     background: var(--bg);
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+.logo {
+    height: 500px;
+}
+
+.card {
+    margin: 0;
+}
+
+.response-container {
+    margin: 0;
 }
 
 /* Animated Eye Styles */
@@ -30,17 +49,26 @@ body {
 @keyframes shrinkPupil {
     0% {
         width: 2.5rem;
-        height: 2.5rem;
+        height: 3.3rem;
+    }
+    5% {
+        width: 0.8rem;
+        height: 3.8rem;
     }
 
     10%, 80% {
         width: 1rem;
-        height: 3rem;
+        height: 3.5rem;
+    }
+
+    85% {
+        height: 0.5rem;
+        width: 3.5rem;
     }
 
     90% {
         width: 2.5rem;
-        height: 2.5rem;
+        height: 3.3rem;
     }
 }
 
@@ -196,7 +224,7 @@ h2 {
 
 .animated-eye-inline .iris {
     width: 6rem;
-    height: 6rem;
+    height: 6.5rem;
     background: var(--trim1);
     border-radius: 50%;
     position: relative;
@@ -208,7 +236,7 @@ h2 {
 
 .animated-eye-inline .pupil {
     width: 2.5rem;
-    height: 2.5rem;
+    height: 3.3rem;
     background-color: var(--bg);
     border-radius: 50%;
     position: relative;
@@ -373,7 +401,6 @@ h2 {
 }
 
 .card {
-    margin: 2rem;
     padding: 1.5rem;
     text-align: center;
     color: inherit;
@@ -390,6 +417,14 @@ h2 {
     min-width: 800px;
     min-height: 200px;
     resize: none;
+}
+
+.card textarea::placeholder {
+    font-size: 1.5em;
+    text-align: center;
+    font-weight: bold;
+    color: rgba(255, 255, 255, 0.2);
+    line-height: 200px;
 }
 
 .inputBox {
