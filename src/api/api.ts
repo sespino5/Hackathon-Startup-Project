@@ -50,6 +50,8 @@ export class Validation {
             return Convert.toSomeUsableResponses(JSON.stringify(FAKE_JSON.validation));
         }
 
+        console.log("Validating...")
+
         if (!CONFIG.openai_api_key) throw Error("Set your OpenAI API key please senor");
         const res = await client?.chat.completions.create({
             model: "gpt-5",
@@ -62,6 +64,8 @@ export class Validation {
 
         const bleh = res?.choices[0].message;
         const usableResponses = Convert.toSomeUsableResponses(bleh?.content || "{}");
-       return usableResponses;
+        console.log(usableResponses);
+
+        return usableResponses;
     }
 }

@@ -50,6 +50,7 @@ function App() {
             // Add both full and truncated versions to history
             const truncatedValue = processInputText(inputValue, 4)
             setPromptHistory(prev => [...prev, { full: trimmedValue, truncated: truncatedValue }])
+            setValidationResults([]);
 
             // Show the full input text (without trimming) in the display area
             setDisplayedContent(trimmedValue)
@@ -62,19 +63,12 @@ function App() {
             resetTextareaHeight(textareaRef)
             // Open sidebar to show history
             setSidebarOpen(false)
-
             setIsValidation(true);
 
-            Generation.post(trimmedValue).then(res => {
-                setDisplayedContent(res.content);
-                Validation.post(res.content).then((data) => {
-                    setValidationResults(data)
-                    setIsValidation(false);
-                });
+            Validation.post(trimmedValue).then((data) => {
+                setValidationResults(data);
+                setIsValidation(false);
             });
-
-
-
         }
     }
 
