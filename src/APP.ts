@@ -42,10 +42,10 @@ export function focusAndExpandTextarea(textareaRef: React.RefObject<HTMLTextArea
 export function attachRandomEyeMovement(eyeElement: HTMLElement) {
     const animations = [
         'moveIrisRandom1',
-        'moveIrisRandom2', 
-        'moveIrisRandom3',
-        'moveIrisRandom4',
-        'moveIrisRandom5'
+        // 'moveIrisRandom2', 
+        // 'moveIrisRandom3',
+        // 'moveIrisRandom4',
+        // 'moveIrisRandom5'
     ];
     
 
@@ -53,7 +53,9 @@ export function attachRandomEyeMovement(eyeElement: HTMLElement) {
         // Generate random values similar to random(min, max)
         const randomAnimation = animations[Math.floor(Math.random() * animations.length)];
         
-        eyeElement.style.animation = `${randomAnimation} 1.5s ease-in-out 1.5s`;
+        eyeElement.style.animation = "none";
+        eyeElement.offsetHeight;
+        eyeElement.style.animation = `${randomAnimation} 1.5s cubic-bezier(.01, .1, .25, 1) 1.5s`;
 
     }
 
