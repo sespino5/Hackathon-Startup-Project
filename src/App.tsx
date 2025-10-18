@@ -67,8 +67,8 @@ function App() {
 
       Generation.post(trimmedValue).then(res => {
         setDisplayedContent(res.content);
-        Validation.post(res.content).then(() => {
-          setValidationResults(FAKE_JSON.validation);
+        Validation.post(res.content).then((data) => {
+          setValidationResults(data);
         });
       });
 

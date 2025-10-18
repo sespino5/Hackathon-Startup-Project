@@ -44,14 +44,14 @@ export class Validation {
     * Posts `message` to an LLM for code validation, deserializes
     * response into a usable JS object.
     */
-    public static async post(message: string): Promise<void> {
+    public static async post(message: string): Promise<SomeUsableResponseIdk[]> {
         if (DEBUG) {
             console.log(FAKE_JSON.validation);
-            return;
+            return Convert.toSomeUsableResponses(JSON.stringify(FAKE_JSON.validation));
         }
-        if (!client) return;
+
         if (!CONFIG.openai_api_key) throw Error("Set your OpenAI API key please senor");
-        const res = await client.chat.completions.create({
+        const res = await client?.chat.completions.create({
             model: "gpt-5",
             messages: [
                 { role: "system", content: CONFIG.system },
@@ -60,8 +60,8 @@ export class Validation {
         })
 
 
-        const bleh = res.choices[0].message;
-        const usableResponses = Convert.toSomeUsableResponses(bleh.content || "{}");
-        console.log(usableResponses)
+        const bleh = res?.choices[0].message;
+        const usableResponses = Convert.toSomeUsableResponses(bleh?.content || "{}");
+       return usableResponses;
     }
 }
