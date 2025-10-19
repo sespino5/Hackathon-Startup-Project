@@ -47,6 +47,7 @@ export class Validation {
     public static async post(message: string): Promise<SomeUsableResponseIdk[]> {
         if (DEBUG) {
             console.log(FAKE_JSON.validation);
+            await new Promise(r => setTimeout(r, 3000000));
             return Convert.toSomeUsableResponses(JSON.stringify(FAKE_JSON.validation));
         }
 

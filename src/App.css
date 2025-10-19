@@ -4,6 +4,7 @@
     --trim1: #00d660;
     --trim2: #0f7385;
     --trim3: #2093A5;
+    --trim4: #d20f39;
     --highlight: #ef4444;
 }
 
@@ -23,6 +24,57 @@ main {
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
+}
+.loader {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  display: inline-block;
+  border-top: 4px solid var(--fg);
+  border-right: 4px solid transparent;
+  box-sizing: border-box;
+  animation: rotation 1s linear infinite;
+}
+.loader::after {
+  content: '';  
+  box-sizing: border-box;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  border-left: 4px solid var(--trim1);
+  border-bottom: 4px solid transparent;
+  animation: rotation 0.5s linear infinite reverse;
+}
+
+.throbber-container {
+    display:flex;
+    flex-direction: column;
+}
+
+.throbber-text {
+    font-size: 1.2rem;
+    margin-top: 1rem;
+}
+
+@keyframes rotation {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes scaleOut {
+  0% {
+    transform: scale(0);
+  }
+  100% {
+    transform: scale(1);
+  }
 }
 
 .logo {
@@ -351,7 +403,6 @@ h2 {
 
 /* Code Block Styles */
 .code-block-container {
-    width: 100%;
     cursor: pointer;
     margin: 0;
 }
@@ -391,7 +442,6 @@ h2 {
     cursor: pointer;
     color: var(--fg);
     display: inline-block;
-    width: 100%;
     transition: color 0.2s ease;
 }
 
@@ -423,9 +473,12 @@ h2 {
 .card textarea {
     background-color: rgba(0, 0, 30);
     border: none;
-    min-width: 800px;
+    min-width: 1024px;
     min-height: 200px;
     resize: none;
+    padding: 2rem;
+    border-radius: 15px;
+    font-size: 1rem;
 }
 
 .card textarea::placeholder {
@@ -442,6 +495,20 @@ h2 {
     box-shadow: 0 0 0 2px rgba(100, 108, 255, 0.2);
 }
 
+.react-tooltip {
+    background-color: var(--trim4) !important;
+    color: var(--fg) !important;
+    border: 1px solid rgba(255, 255, 255, 0.2) !important;
+    border-radius: 8px !important;
+    padding: 12px 16px !important;
+    font-size: 14px !important;
+    line-height: 1.5 !important;
+    max-width: 300px !important;
+    word-wrap: break-word !important;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3) !important;
+    z-index: 9999 !important;
+    font-family: 'SF Mono', 'Monaco', 'Inconsolata', monospace !important;
+}
 .card button {
     padding: 10px 20px;
     margin: 0 5px;
@@ -478,8 +545,7 @@ h2 {
     padding: 0;
     border-radius: 12px;
     border: 2px solid rgba(255, 255, 255, 0.2);
-    max-width: 800px;
-    width: 100%;
+    min-width: 60vw;
     align-self: center;
     animation: slideIn 0.3s ease-out;
 }

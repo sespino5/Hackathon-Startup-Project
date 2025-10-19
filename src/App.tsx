@@ -4,7 +4,6 @@ import './App.css'
 import { useState, useRef, useEffect } from 'react'
 import 'react-tooltip/dist/react-tooltip.css'
 import { Generation, Validation } from './api/api.ts'
-import myGif from './throbber/throbber.gif';
 
 
 function App() {
@@ -85,6 +84,7 @@ function App() {
         setShowDisplay(false)
         setHideInput(false)
         setDisplayedContent('')
+        setIsValidation(false)
     }
 
     return (
@@ -152,13 +152,16 @@ function App() {
                     )}
 
                     {isValidation && (
-                        <div className="response-container">
-                        <img src={myGif} alt="Loading..." className="loading-gif" />
+                        <div className="throbber-container">
+                            <div>
+                                <span className="loader"></span>
+                            </div>
+                            <span className="throbber-text">Analyzing code...</span>
                         </div>
                     )}
 
                     {/* AI-style Response Display Area */}
-                    {showDisplay &&  (
+                    {showDisplay && (
                         <div className="response-container">
                             <div className="response-header">
                                 <div className="header-buttons">
