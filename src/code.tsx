@@ -1,5 +1,5 @@
 import { Tooltip } from 'react-tooltip';
-import { formatTextForDisplay, formatCodeWithLineNumbers } from './code.ts';
+import { formatTextForDisplay, formatCodeWithLineNumbers } from './Code.ts';
 
 
 interface CodeBlockProps {

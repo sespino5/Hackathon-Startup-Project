@@ -50,8 +50,11 @@ main {
 }
 
 .throbber-container {
-    display:flex;
+    display: flex;
     flex-direction: column;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
 }
 
 .throbber-text {
@@ -496,7 +499,7 @@ h2 {
 }
 
 .react-tooltip {
-    background-color: var(--trim4) !important;
+    background-color: #1f2937 !important;
     color: var(--fg) !important;
     border: 1px solid rgba(255, 255, 255, 0.2) !important;
     border-radius: 8px !important;
@@ -743,5 +746,130 @@ h2 {
 
 .highlighted-code-line:hover {
     background-color: rgba(239, 68, 68, 0.3) !important;
+}
 
+/* Transition Animations */
+.fade-in {
+    opacity: 1 !important;
+    transform: translateY(0) !important;
+    animation: fadeInUp 0.6s ease-out forwards;
+}
+
+.fade-out {
+    opacity: 0 !important;
+    transform: translateY(-20px) !important;
+    transition: opacity 0.4s ease-in, transform 0.4s ease-in;
+}
+
+.highlight-transition {
+    animation: highlightReveal 0.8s ease-out forwards;
+}
+
+@keyframes fadeInUp {
+    0% {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes highlightReveal {
+    0% {
+        filter: brightness(1);
+    }
+    50% {
+        filter: brightness(1.2);
+    }
+    100% {
+        filter: brightness(1);
+    }
+}
+
+/* Smooth transitions for response container */
+.response-container {
+    transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
+ 
+    
+}
+
+/* Highlighted elements entrance animation */
+.highlighted-code-line {
+    opacity: 0;
+    transform: translateX(-10px);
+    animation: highlightSlideIn 1.2s ease-out forwards;
+    animation-delay: 0.3s; /* Delay the highlight appearance */
+}
+
+.highlighted-line-number {
+    opacity: 0;
+    transform: scale(0.8);
+    animation: numberSlideIn 1.2s ease-out forwards;
+    animation-delay: 0.3s; /* Same delay as code lines */
+}
+
+@keyframes highlightSlideIn {
+    0% {
+        opacity: 0;
+        background-color: rgba(239, 68, 68, 0) !important;
+        transform: translateX(-10px) scale(0.98);
+    }
+    30% {
+        opacity: 0.3;
+        background-color: rgba(239, 68, 68, 0.1) !important;
+    }
+    60% {
+        opacity: 0.8;
+        background-color: rgba(67, 64, 64, 0.3) !important;
+        transform: translateX(0) scale(1.02);
+    }
+    100% {
+        opacity: 1;
+        background-color: rgba(239, 68, 68, 0.2) !important;
+        transform: translateX(0) scale(1);
+    }
+}
+
+@keyframes numberSlideIn {
+    0% {
+        opacity: 0;
+        background-color: rgba(124, 45, 18, 0) !important;
+        transform: scale(0.8);
+    }
+    30% {
+        opacity: 0.3;
+        background-color: rgba(124, 45, 18, 0.3) !important;
+    }
+    60% {
+        opacity: 0.8;
+        background-color: rgba(124, 45, 18, 0.8) !important;
+        transform: scale(1.1);
+    }
+    100% {
+        opacity: 1;
+        background-color: #7c2d12 !important;
+        transform: scale(1);
+    }
+}
+
+/* Slide up animation for text box after throbber disappears */
+.slide-up-after-throbber {
+    animation: slideUpSmooth 0.8s ease-out forwards;
+}
+
+
+
+@keyframes slideUpSmooth {
+    0% {
+        transform: translateY(0);
+    }
+    100% {
+        transform: translateY(-120px);
+    }
+}
+
+.original-prompt-section {
+    transition: transform 0.8s ease-out;
 }

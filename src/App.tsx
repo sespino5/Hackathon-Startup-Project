@@ -14,6 +14,8 @@ function App() {
     const [displayedContent, setDisplayedContent] = useState<string>('')
     const [validationResults, setValidationResults] = useState<any[]>([])
     const [isValidation, setIsValidation] = useState(false)
+    const [showHighlights, setShowHighlights] = useState(false)
+    const [upperTransition, setUpperTransition] = useState(false)
     const [showDisplay, setShowDisplay] = useState(false)
     const [hideInput, setHideInput] = useState(false)
     const textareaRef = useRef<HTMLTextAreaElement>(null)
@@ -63,10 +65,19 @@ function App() {
             // Open sidebar to show history
             setSidebarOpen(false)
             setIsValidation(true);
+            setShowHighlights(false); // Reset highlights
 
             Validation.post(trimmedValue).then((data) => {
                 setValidationResults(data);
                 setIsValidation(false);
+                
+                // Delay the highlight appearance for smooth transition
+                setTimeout(() => {
+                    setShowHighlights(true);
+                }, 500); // 500ms delay after validation completes
+
+
+              
             });
         }
     }
@@ -85,6 +96,7 @@ function App() {
         setHideInput(false)
         setDisplayedContent('')
         setIsValidation(false)
+        setShowHighlights(false) // Reset highlights when starting new prompt
     }
 
     return (
@@ -152,7 +164,7 @@ function App() {
                     )}
 
                     {isValidation && (
-                        <div className="throbber-container">
+                        <div className="throbber-container fade-in">
                             <div>
                                 <span className="loader"></span>
                             </div>
@@ -162,7 +174,7 @@ function App() {
 
                     {/* AI-style Response Display Area */}
                     {showDisplay && (
-                        <div className="response-container">
+                        <div className={`response-container ${showHighlights ? 'slide-up-after-throbber' : ''}`}>
                             <div className="response-header">
                                 <div className="header-buttons">
                                     <button
@@ -177,11 +189,11 @@ function App() {
                             <div className="response-content">
 
                                 {/* Display Original Prompt */}
-                                <div className="original-prompt-section">
+                                <div className={`${showHighlights ? 'highlight-transition' : ''}`}>
                                     <CodeBlock
                                         text={displayedContent}
                                         isResponse={true}
-                                        highlightLines={validationResults}
+                                        highlightLines={showHighlights ? validationResults : []}
                                     />
                                 </div>
 
